@@ -39,10 +39,10 @@
     "06": "echo -------------------------------------------- Clean ----------------------------------------------",
     "clean": "rimraf dist node_modules dist/libs",
     "playwright": "npx playwright test --config='e2e-playwright/playwright.config.ts'",
-    "deploy": "npm version patch && concurrently npm:deploy:demoshell npm:deploy:core npm:deploy:stories",
+    "deploy": "npm version patch && concurrently npm:deploy:demoshell npm:deploy:core-stories npm:deploy:stories",
     "deploy:demoshell": "npm run build && npm run deploy:package-json-demoshell && npm publish ./dist/demoshell --access public",
-    "deploy:core": "npm run build && npm run deploy:package-json-core && npm publish ./dist/core --access public",
-    "deploy:stories": "npm run build && npm run deploy:package-json-stories && npm publish ./dist/stories --access public",
+    "deploy:core-stories": "npm run build:core-stories && npm run deploy:package-json-core && npm publish ./dist/core --access public",
+    "deploy:stories": "npm run build:stories && npm run deploy:package-json-stories && npm publish ./dist/stories --access public",
     "deploy:package-json-demoshell": "fathym dev package transform -d ./dist/demoshell -o \"@fathy-hyland/alfresco-ng2-components-deploy|\"",
     "deploy:package-json-core": "fathym dev package transform -d ./dist/core -o \"@fathy-hyland/alfresco-ng2-components-deploy|\"",
     "deploy:package-json-stories": "fathym dev package transform -d ./dis/core -o \"@fathy-hyland/alfresco-ng2-components-deploy|\""
